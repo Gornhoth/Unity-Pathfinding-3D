@@ -35,6 +35,11 @@ Combining some of these optimisations, Ruins of the Lost features an SVO per roo
 
 ## Bonus Chapter: Interpolating the path found via A* in VFX Graph (with a given amount of particles)
 ![](Interpolation_VFXGraph.png)
+Description: Insert your path into a graphics buffer count node, and divide the result by the amount of particles you want to use. Multiply that result with the current particle ID and then split that result into two separate calculation paths:
+* The first converts the result into an int. Now use two Sample Graphics Buffer nodes with the input path and mode = "Clamp" to sample at the int index you just received, and the int index + 1. Let these two results be X and Y for our Lerp node to interpolate between the previous and next particle's position.
+* The second calculation path inserts the result into a Subtract node to subtract the int index of the first calculation path from. This results in a float remainder that is now used as interpolation value between X and Y of the first calculation path.
+
+The result of this interpolation method is a point in 3D that is on the path found by the A*.
 
 # Sources
 [Getting off the NavMesh: Navigating in Fully 3D Environments](https://www.gdcvault.com/play/1022016/Getting-off-the-NavMesh-Navigating)
