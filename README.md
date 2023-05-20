@@ -22,5 +22,6 @@ An octree is a relatively simple spatial data structure that splits a parent spa
 * It is very memory efficient, as large unoccupied space is not stored explicity but by the fact that no node is allocated for that space. On top of that, large occupied space can also be reduced into bigger occupied nodes if we remove the constraint of a node always being as small as a voxel.
 
 # Sources
-*[Getting off the NavMesh: Navigating in Fully 3D Environments](https://www.gdcvault.com/play/1022016/Getting-off-the-NavMesh-Navigating)
-*"Fast Parallel Surface and Solid Voxelisation on GPUs" by Schwarz and Seidel
+[Getting off the NavMesh: Navigating in Fully 3D Environments](https://www.gdcvault.com/play/1022016/Getting-off-the-NavMesh-Navigating)
+
+"Fast Parallel Surface and Solid Voxelisation on GPUs" by Schwarz and Seidel
