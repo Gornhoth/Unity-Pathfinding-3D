@@ -22,6 +22,12 @@ An octree is a relatively simple spatial data structure that splits a parent spa
 * It is reasonably fast to be traversed, as accessing any (voxel-)node  inside the tree has guaranteed O(log n) logarithmic time complexity (even better if subsequent traversal for neighbouring nodes is done from a starting node instead of the root). By nature of having much fewer nodes than a uniform grid has cells, traversal is sped up because fewer nodes cover the whole space; therefore, requiring less traversal time.
 * It is very memory efficient, as large unoccupied space is not stored explicity but by the fact that no node is allocated for that space. On top of that, large occupied space can also be reduced into bigger occupied nodes if we remove the constraint of a node always being as small as a voxel.
 
+![](Bunny_octree_front.png)
+![](Bunny_octree_side.png)
+![](Bunny_octree_top.png)
+Here you can see the Stanford bunny voxelised into a SVO viewed from each cardinal direction. The green squares represent empty, non-occupied octree nodes. The red squares (sometimes a bit orange/brown/dark-green because of edge overlap with adjacent empty nodes) represent occupied octree nodes.
+
+
 ## The overlap check
 Now that we defined our data structure, we need to determine whether a voxel is occupied or not in order to insert it into the octree. This is done by performing the overlap check as proposed by Schwarz and Seidel (see Sources below). To make the curious reader's life easier, an implementation (with some helpful comments) of their overlap check is provided [here](https://gist.github.com/Gornhoth/d3ab60d40689148e5a5f9a5566259d51). Just copy this file into your Unity project, add it onto a gameobject in a scene, and drag the reference to a triangle (or a whole mesh like the default cube for example) including its transform onto the script's serialised fields the editor (Note: If you use a whole mesh, only the first triangle will be visualised with this script). With the maths behind it in place, we can traverse a whole mesh (or several meshes) and set the cells of our (currently still uniform grid) world to occupied if a triangle overlaps the cell. This results in a densely packed voxel array where each set _bit_ indicates an occupied voxel (the index of the voxel can be translated back into grid space as shown in the code). The occupied cells can now be inserted one by one into the octree, resulting in our sparsely populated voxel octree over a given set of triangles.
 
