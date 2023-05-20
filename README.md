@@ -14,6 +14,7 @@ The game [Ruins of the Lost](https://portfolio.fh-salzburg.ac.at/projects/2022-r
 Usually, pathfinding in 2 dimensions (eg. on the surface of a 3D world) is solved by baking a navmesh and using navmesh-agents, which is a simple task in unity. How would you bake a navmesh in 3D? There is not a surface to follow, as the volume of the free space in the world is the medium to be traversed. So let us introduce a spatial tree structure, as is common for other game engine (sub-)systems like physics for example. Let us define the following requirements for that structure:
 * It must be **fast** to traverse the structure.
 * It must be memory efficient, as we want to support pathfinding in large environments.
+
 Let us consider a regular 3D-Grid with uniform spacing first. This would be the trivial solution to the problem, as you would just subdivide the world in grid cells with a given size and dimensions and check whether any static (geometric) objects overlap each cell (more on that later). It would be reasonably fast to traverse this structure, as any cell can be accessed in constant O(1) time. However, often times (especially for large, open worlds) a lot of space is unoccupied by any geometry, but a regular grid allocated a cell regardless of any overlap with geometry. This not only leads to excessive memory requirements to have a uniform grid for a large space, it also leads to worse pathfinding runtime because most cells are empty but can not be skipped in traversal. Introducing:
 
 ## The **S**parse **V**oxelisation **O**ctree
