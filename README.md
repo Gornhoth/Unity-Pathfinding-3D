@@ -8,7 +8,7 @@ Have you ever wanted had a 3D world where you needed some sort of pathfinding th
 In this tutorial we will be covering the construction of a sparse voexlisation octree as well as the traversal of it using an optimised A* pathfinding algorithm. The techniques presented will only work for static environments, meaning that dynamic obstacle avoidance must be handled separately which is NOT covered in this tutorial. However, if you know how to do dynamic obstacle avoidance you can use the framework described in this tutorial to handle the static pathfinding and then just build your dynamic obstacle avoidance framework on top of it without a problem. If you want to know about the topic of dynamic obstacle avoidance I recommend reading up on **Optimal Reciprocal Collision Avoidance** (ORCA).
 
 ## The problem to solve
-The game [Ruins of the Lost](https://portfolio.fh-salzburg.ac.at/projects/2022-ruins-of-the-lost) wanted to introduce a ranged weapon that could automatically search for its targets when fired without the need of aiming at the targets. As part of the solution, an automatically triggered lightning emitter and a bow shooting enemy-seeking chain lightnings were desired.
+The game [Ruins of the Lost](https://store.steampowered.com/app/2379960/Ruins_of_the_Lost/) wanted to introduce a ranged weapon that could automatically search for its targets when fired without the need of aiming at the targets. As part of the solution, an automatically triggered lightning emitter and a bow shooting enemy-seeking chain lightnings were desired.
 
 ![](RuinsOfTheLost.png)
 
